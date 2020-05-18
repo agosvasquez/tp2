@@ -4,9 +4,9 @@
 
 class Baker: public Producer{
 public:
-    Baker(BlockingQueue&);
+    Baker(Inventary& i, int&sum, std::mutex& m);
+    int print();
     ~Baker();
 };
-
 
 #endif

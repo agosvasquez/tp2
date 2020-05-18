@@ -1,15 +1,15 @@
 #ifndef WORKER_H
 #define WORKER_H
-#include "blocking_queue.h"
+#include "inventary.h"
 
 class Worker{
 protected:
-    BlockingQueue& q;
-
+    Inventary& inventary;
 public:
-    Worker(BlockingQueue& queue);
+    Worker(Inventary& inventary);
     virtual int print();
-    //~Worker();
+    virtual void operator()();
+    ~Worker();
 
 };
 

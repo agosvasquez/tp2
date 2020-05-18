@@ -3,7 +3,7 @@
 namespace{
     std::vector<std::string> MATERIAL = {"trigo"};
 }
-Agricultor::Agricultor(BlockingQueue& queue): Recolector(std::ref(MATERIAL),queue){}
+Agricultor::Agricultor(BlockingQueue& queue, Inventary& i): Recolector(std::ref(MATERIAL),queue, i){}
 
 int Agricultor::print(){
     std::cout<<"soy agricultor\n";

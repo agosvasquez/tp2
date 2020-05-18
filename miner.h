@@ -4,7 +4,7 @@
 
 class Miner: public Recolector {
 public:
-    Miner(BlockingQueue& queue);
+    Miner(BlockingQueue& queue, Inventary& i);
     int print();
 };
 

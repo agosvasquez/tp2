@@ -5,7 +5,7 @@ namespace{
     std::vector<std::string> MATERIAL{"hierro", "carbon"};
 }
 
-Miner::Miner(BlockingQueue& queue):Recolector(std::ref(MATERIAL), queue){}
+Miner::Miner(BlockingQueue& queue, Inventary& i):Recolector(std::ref(MATERIAL), queue, i){}
 
 int Miner::print(){
     std::cout << "Soy minero\n";

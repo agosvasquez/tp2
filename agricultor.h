@@ -5,7 +5,7 @@
 
 class Agricultor : public Recolector{
 public:
-    Agricultor(BlockingQueue& queue);
+    Agricultor(BlockingQueue& queue,Inventary& i);
     int print();
 };
 

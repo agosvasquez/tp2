@@ -2,12 +2,16 @@
 #define PRODUCER_H
 #include "worker.h"
 #include <map>
+#include <mutex>
 
 class Producer: public Worker{
 private:
     std::map<std::string, int>& materials;
     int& points;
+    int& sum;
+    std::mutex& mutex;
 public:
-    Producer(std::map<std::string, int>&  materials, int& points, BlockingQueue& q);
+    Producer(std::map<std::string, int>&  materials, int& points, Inventary& i,int&sum, std::mutex& m);
+    void operator()();
 };
 #endif 

@@ -4,7 +4,7 @@
 
 class Leniador: public Recolector{
 public:
-    Leniador(BlockingQueue& queue);
+    Leniador(BlockingQueue& queue, Inventary& i);
     int print();
 };
 

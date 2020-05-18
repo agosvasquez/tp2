@@ -4,7 +4,8 @@
 
 class Carpenter: public Producer{
 public:
-    Carpenter(BlockingQueue& queue);
+    Carpenter(Inventary& i, int&sum, std::mutex& m);
+    int print();
     ~Carpenter();
 };
 

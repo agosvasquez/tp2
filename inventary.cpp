@@ -1,4 +1,5 @@
 #include "inventary.h"
+#include <iostream>
 
 
 Inventary::Inventary(std::vector<std::string> materials, int r):recolectors_working(r), completed(false){
@@ -7,55 +8,51 @@ Inventary::Inventary(std::vector<std::string> materials, int r):recolectors_work
 	};
 }
 
+Inventary::~Inventary(){}
+
 void Inventary::add(std::string material){
     std::unique_lock<std::mutex> uniq_l(mut);
     std::map<std::string, int>::iterator it = resources.find(material); 
     if (it != resources.end())
-    it->second +=1;
+    it->second +=1; 
+    //condition.notify_all();
 }
 
-void Inventary::add_and_check(std::string material){
-    add(material);
-    std::unique_lock<std::mutex> uniq_l(mut);
-    check_completed_recipe();
-    if (completed) condition.notify_all();
-}
 
-void Inventary::get_resources(std::string material){
+bool Inventary::get_resources(std::map<std::string,int> recipe){
     std::unique_lock<std::mutex> uniq_l(mut);
-    while(recolectors_working > 0){
-        while(!completed){
-            condition.wait(uniq_l);
-        }
-        int pos =check_completed_recipe(); 
-        std::map<std::string, int>::iterator it = recipes[pos].begin();
-        for (;it!=recipes[pos].end(); ++it) {
-            resources[it->first] -= it->second;
-        };
+    check_completed_recipe(recipe);
+    while(!completed){
+         //no deberia ser necesario;
+        if(is_finish())return false;
+        //condition.wait(uniq_l);
+        check_completed_recipe(recipe); 
     }
+    std::map<std::string, int>::iterator it = recipe.begin();
+    for (;it!=recipe.end(); ++it) {
+        resources[it->first] -= it->second;
+    };
+    completed = false;
+    return true;
 }
 
-void Inventary::set_need_resources(std::map<std::string,int>& recipe){
-    std::lock_guard<std::mutex> guard_l(m);
-    recipes.push_back(recipe);
-}
 
-int Inventary::check_completed_recipe(){
-    if (recipes.size() == 0) return -1;
+void Inventary::check_completed_recipe(std::map<std::string,int> recipe){
     bool aux= true;
-    int i;
-    for (i =0 ;i <(int)recipes.size(); i++) {
-       std::map<std::string, int> map = recipes[i];
-       std::map<std::string, int>::iterator it = map.begin();
-       for (;it!=map.end(); ++it) {
-           if (resources[it->first] < it->second){ aux=false; break;}
-       };
-       if (aux)break;
-	};
+    std::map<std::string, int>::iterator it = recipe.begin();
+    for (;it!=recipe.end(); ++it) {
+        if (resources[it->first] < it->second){ aux=false; break;}
+    };
     completed = aux;
-    return i;
 }
 
 void Inventary::update_workers(){
-    
+    std::lock_guard<std::mutex> guard_l(r);
+    recolectors_working --;
+    std::cout << recolectors_working;
+}
+
+bool Inventary::is_finish(){
+    std::unique_lock<std::mutex> uniq_l(r);
+    return recolectors_working == 0;
 }

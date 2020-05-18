@@ -4,10 +4,9 @@
 
 class Gunsmith: public Producer{
 public:
-    Gunsmith(BlockingQueue& queue);
+    Gunsmith(Inventary& i, int&sum, std::mutex& m);
+    int print();
     ~Gunsmith();
 };
-
-
 
 #endif

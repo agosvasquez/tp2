@@ -9,7 +9,6 @@ class BlockingQueue{
 private:
     bool closed;
     std::mutex mut;
-    
     std::condition_variable condition;
 public:
     std::queue<std::string> queue;
