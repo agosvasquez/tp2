@@ -17,21 +17,21 @@ namespace {
 }
 
 
-WorkerManager::WorkerManager(std::string& names_rec, std::vector< Worker*>& workers, Inventary& i):
-names_rec(names_rec), workers(workers),i(i),sum(0){}
+WorkerManager::WorkerManager(std::string& names_rec, std::vector< Worker*>& p,std::vector< Worker*>& r, Inventary& i):
+names_rec(names_rec), producers(p), recolectors(r),i(i),sum(0){}
 
 void WorkerManager::create_worker(std::string worker_name){
     std::cout<<worker_name << "\n";
 
     if (names_rec.find(worker_name)!= std::string::npos){
-            if (worker_name == AGRICULTORS) workers.push_back(new Agricultor (std::ref(agricultor_q),i));
-            else if (worker_name == LENIADORES)workers.push_back(new Leniador(std::ref(leniador_q),i));
-            else if (worker_name == MINERS) workers.push_back(new Miner(std::ref(miner_q),i));
+            if (worker_name == AGRICULTORS) recolectors.push_back(new Agricultor (std::ref(agricultor_q),i));
+            else if (worker_name == LENIADORES)recolectors.push_back(new Leniador(std::ref(leniador_q),i));
+            else if (worker_name == MINERS) recolectors.push_back(new Miner(std::ref(miner_q),i));
             
     }else{
-       if (worker_name == BAKERS) workers.push_back(new Baker(i,std::ref(sum),std::ref(m)));
-        else if (worker_name == CARPENTERS)workers.push_back(new Carpenter(i,std::ref(sum),std::ref(m)));
-        else if (worker_name == GUNSMITHS) workers.push_back(new Gunsmith(i,std::ref(sum),std::ref(m)));
+       if (worker_name == BAKERS) producers.push_back(new Baker(i,std::ref(sum),m));
+        else if (worker_name == CARPENTERS)producers.push_back(new Carpenter(i,std::ref(sum),m));
+        else if (worker_name == GUNSMITHS) producers.push_back(new Gunsmith(i,std::ref(sum),m));
     }
 }
 

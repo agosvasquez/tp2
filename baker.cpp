@@ -2,7 +2,7 @@
 #include <iostream>
 namespace{
     std::map<std::string,int> MATERIALS = {{"trigo",2},{"carbon",1}};
-    int POINTS= 2;
+    int POINTS= 5;
 }
 
 Baker::Baker(Inventary& i, int&sum, std::mutex& m): Producer(std::ref(MATERIALS),std::ref(POINTS), i, sum, m){}

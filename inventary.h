@@ -19,7 +19,7 @@ public:
     void add_and_check(std::string material);
     void add(std::string material);
     bool get_resources(std::map<std::string,int> recipe);
-    void check_completed_recipe(std::map<std::string,int> recipe);
+    bool check_completed_recipe(std::map<std::string,int> recipe);
     void update_workers();
     bool is_finish();
     ~Inventary();

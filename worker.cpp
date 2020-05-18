@@ -8,6 +8,6 @@ int Worker::print(){
     return 0;
 }
 
-void Worker::operator()() {}
+void Worker::run() {}
 
 Worker::~Worker(){}

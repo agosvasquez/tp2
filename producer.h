@@ -9,9 +9,9 @@ private:
     std::map<std::string, int>& materials;
     int& points;
     int& sum;
-    std::mutex& mutex;
+    std::mutex& mut;
 public:
     Producer(std::map<std::string, int>&  materials, int& points, Inventary& i,int&sum, std::mutex& m);
-    void operator()();
+    void run();
 };
 #endif 

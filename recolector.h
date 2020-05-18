@@ -7,7 +7,7 @@
 class Recolector: public Worker{
 public:
 Recolector(std::vector<std::string>& material, BlockingQueue& queue, Inventary& i);
-void operator()();
+void run();
 protected:
 std::vector<std::string>& material;
 BlockingQueue& q;

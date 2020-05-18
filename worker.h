@@ -1,14 +1,15 @@
 #ifndef WORKER_H
 #define WORKER_H
 #include "inventary.h"
+#include "thread.h"
 
-class Worker{
+class Worker: public Thread{
 protected:
     Inventary& inventary;
 public:
     Worker(Inventary& inventary);
     virtual int print();
-    virtual void operator()();
+    virtual void run();
     ~Worker();
 
 };
