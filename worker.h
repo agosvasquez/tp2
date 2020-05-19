@@ -7,11 +7,10 @@ class Worker: public Thread{
 protected:
     Inventary& inventary;
 public:
-    Worker(Inventary& inventary);
+    explicit Worker(Inventary& inventary);
     virtual int print();
     virtual void run();
     ~Worker();
-
 };
 
 #endif

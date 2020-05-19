@@ -1,6 +1,7 @@
 #ifndef PRODUCER_H
 #define PRODUCER_H
 #include "worker.h"
+#include <string>
 #include <map>
 #include <mutex>
 
@@ -11,7 +12,8 @@ private:
     int& sum;
     std::mutex& mut;
 public:
-    Producer(std::map<std::string, int>&  materials, int& points, Inventary& i,int&sum, std::mutex& m);
+    Producer(std::map<std::string,int>& mat, int& p,
+    Inventary& i,int&sum, std::mutex& m);
     void run();
 };
-#endif 
+#endif

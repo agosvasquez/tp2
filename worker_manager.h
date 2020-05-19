@@ -2,6 +2,8 @@
 #define WORKER_MANAGER_H
 #include "worker.h"
 #include "blocking_queue.h"
+#include <string>
+#include <vector>
 
 class WorkerManager{
     private:
@@ -14,11 +16,12 @@ class WorkerManager{
     std::mutex m;
     public:
     int sum;
-    BlockingQueue agricultor_q;
+    BlockingQueue agri_q;
     BlockingQueue miner_q;
     BlockingQueue leniador_q;
     void create_worker(std::string worker_name);
-    WorkerManager(std::string& names_rec, std::vector<Worker*>& p,std::vector<Worker*>& r, Inventary& i);
+    WorkerManager(std::string& names_rec, std::vector<Worker*>& p,
+    std::vector<Worker*>& r, Inventary& i);
     int save_material(char m);
     void close();
 };

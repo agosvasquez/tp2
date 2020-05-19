@@ -1,11 +1,14 @@
 #include "baker.h"
 #include <iostream>
+#include <string>
+#include <map>
 namespace{
-    std::map<std::string,int> MATERIALS = {{"trigo",2},{"carbon",1}};
+    std::map<std::string,int> MAT = {{"trigo",2},{"carbon",1}};
     int POINTS= 5;
 }
 
-Baker::Baker(Inventary& i, int&sum, std::mutex& m): Producer(std::ref(MATERIALS),std::ref(POINTS), i, sum, m){}
+Baker::Baker(Inventary& i, int&sum, std::mutex& m):
+ Producer(std::ref(MAT),std::ref(POINTS), i, sum, m){}
 
 int Baker::print(){
     std::cout<<"soy baker\n";

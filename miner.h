@@ -8,6 +8,4 @@ public:
     int print();
 };
 
-
-
 #endif

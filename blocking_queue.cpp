@@ -12,8 +12,8 @@ void BlockingQueue::push(std::string s){
 std::string BlockingQueue::pop(){
     std::unique_lock<std::mutex> uniq_l(mut);
 
-    while(queue.empty()){
-        if(closed){
+    while (queue.empty()){
+        if (closed){
             return std::string();
         }
         condition.wait(uniq_l);

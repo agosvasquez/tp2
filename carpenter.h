@@ -9,6 +9,4 @@ public:
     ~Carpenter();
 };
 
-
-
 #endif

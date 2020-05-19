@@ -1,10 +1,13 @@
 #include "leniador.h"
 #include <iostream>
+#include <string>
+#include <vector>
 
 namespace{
-     std::vector<std::string> MATERIAL = {"madera"};
+     std::vector<std::string> MAT = {"madera"};
 }
-Leniador::Leniador(BlockingQueue& queue, Inventary& i): Recolector(std::ref(MATERIAL), queue,i){}
+Leniador::Leniador(BlockingQueue& q, Inventary& i):
+Recolector(std::ref(MAT),q,i){}
 
 int Leniador::print(){
      std::cout<< "soy leniador\n";
