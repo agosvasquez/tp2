@@ -14,12 +14,12 @@ namespace {
     std::string BAKERS = "Cocineros";
     std::string CARPENTERS = "Carpinteros";
     std::string GUNSMITHS = "Armeros";
+    std::string REC = "AgricultoresLeniadoresMineros";
 }
 
 WorkerManager::WorkerManager
-(std::string& names_rec, std::vector< Worker*>& p,
-std::vector< Worker*>& r, Inventary& i):
-names_rec(names_rec), producers(p), recolectors(r),i(i),sum(0){}
+(std::vector< Worker*>& p,std::vector< Worker*>& r, Inventary& i):
+names_rec(REC), producers(p), recolectors(r),i(i),sum(0){}
 
 void WorkerManager::create_worker(std::string worker_name){
     if (names_rec.find(worker_name)!= std::string::npos){
@@ -53,4 +53,20 @@ void WorkerManager::close(){
     agri_q.close();
     leniador_q.close();
     miner_q.close();
+}
+
+void WorkerManager::print_workers_points(){
+      std::cout << "Puntos de Beneficio acumulados: "<< sum << std::endl; 
+}
+
+void WorkerManager::create_workers(File& workers, Parser& parser){
+    std::vector<value_t> parsed;
+    parser.parse_workers(workers,parsed);
+	for (int i=0; i<(int)parsed.size(); ++i) {
+		std::string worker_name = parsed[i].s;
+        int amount = parsed[i].v;
+        for (int i = 0; i < amount; i++){
+           create_worker(worker_name);
+        }
+	}
 }

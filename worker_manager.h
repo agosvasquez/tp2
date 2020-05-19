@@ -2,13 +2,13 @@
 #define WORKER_MANAGER_H
 #include "worker.h"
 #include "blocking_queue.h"
+#include "parser.h"
+#include "file.h"
 #include <string>
 #include <vector>
 
 class WorkerManager{
     private:
-    //std::map<std::string,Recolector> recolectors;
-    //std::map<std::string,Producer> producers;
     std::string& names_rec;
     std::vector<Worker*>& producers;
     std::vector<Worker*>& recolectors;
@@ -20,10 +20,11 @@ class WorkerManager{
     BlockingQueue miner_q;
     BlockingQueue leniador_q;
     void create_worker(std::string worker_name);
-    WorkerManager(std::string& names_rec, std::vector<Worker*>& p,
-    std::vector<Worker*>& r, Inventary& i);
+    WorkerManager(std::vector<Worker*>&p,std::vector<Worker*>& r,Inventary& i);
     int save_material(char m);
     void close();
+    void print_workers_points();
+    void create_workers(File& workers, Parser& parser);
 };
 
 #endif
