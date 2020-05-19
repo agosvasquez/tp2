@@ -96,7 +96,11 @@ int main(int argc, char *argv[]) {
     for (int i =0; i<(int)recolec.size(); i++) {
         recolec[i]->start();
     }
-    
+    //ver de cambiar
+    if (recolec.size() ==0){
+        for (int i=0; i<4; i++) inv.update_workers();
+    }
+        
     while (_map >> m){
         manager.save_material(m);
     }
@@ -118,7 +122,7 @@ int main(int argc, char *argv[]) {
         delete recolec[i];
     }
 
-    std::cout << "Recursos restantes" << std::endl;
+    std::cout << "Recursos restantes:" << std::endl;
     std::map<std::string, int> r = inv.resources;
     std::cout <<"  - Trigo: " << r["trigo"] << std::endl;
     std::cout <<"  - Madera: " << r["madera"] << std::endl;

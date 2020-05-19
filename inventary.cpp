@@ -46,6 +46,7 @@ bool Inventary::check_completed_recipe(std::map<std::string,int> recipe){
 void Inventary::update_workers(){
     std::unique_lock<std::mutex> uniq_l(r);
     if (recolectors_working >0)recolectors_working --;
+    condition.notify_all();
 }
 
 bool Inventary::is_finish(){
