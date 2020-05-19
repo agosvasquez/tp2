@@ -12,19 +12,20 @@ class WorkerManager{
     std::string& names_rec;
     std::vector<Worker*>& producers;
     std::vector<Worker*>& recolectors;
-    Inventary& i;
+    Inventary* i;
     std::mutex m;
-    public:
     int sum;
     BlockingQueue agri_q;
     BlockingQueue miner_q;
     BlockingQueue leniador_q;
+    public:
     void create_worker(std::string worker_name);
-    WorkerManager(std::vector<Worker*>&p,std::vector<Worker*>& r,Inventary& i);
+    WorkerManager(std::vector<Worker*>&p,std::vector<Worker*>& r);
     int save_material(char m);
     void close();
-    void print_workers_points();
+    void output_result();
     void create_workers(File& workers, Parser& parser);
+    ~WorkerManager();
 };
 
 #endif

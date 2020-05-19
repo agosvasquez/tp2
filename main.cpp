@@ -15,15 +15,12 @@ int main(int argc, char *argv[]) {
     }
     char m;
     std::string line;
-    std::vector<std::string> resourses= {"carbon", "hierro", "madera", "trigo"};
     std::vector<Worker*> prod,recolec;
     Parser p(std::ref(line));
     File _workers(argv[1]),_map(argv[2]); 
-    Inventary inv(resourses);
-    WorkerManager manager(std::ref(prod),std::ref(recolec),inv);
-    
+    WorkerManager manager(std::ref(prod),std::ref(recolec));
+
     manager.create_workers(_workers,p);
-    inv.set_workers((int)recolec.size());
 
     for (int i =0; i<(int)prod.size(); i++) prod[i]->start();
     for (int i =0; i<(int)recolec.size(); i++) recolec[i]->start();
@@ -37,8 +34,7 @@ int main(int argc, char *argv[]) {
     for (int i =0 ; i <(int)prod.size(); i++) delete prod[i];
     for (int i =0 ; i <(int)recolec.size(); i++) delete recolec[i];
     
-    inv.print_inventary();
-    manager.print_workers_points();
+    manager.output_result();
     return 0;
 } 
     

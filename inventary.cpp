@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <thread>
 
-Inventary::Inventary(std::vector<std::string> materials):completed(false){
+Inventary::Inventary(std::vector<std::string> materials){
      for (int i =0 ; i <(int)materials.size(); i++) {
         resources.insert({materials[i], 0});
 	}
@@ -48,8 +48,8 @@ bool Inventary::check_completed_recipe(std::map<std::string,int> recipe){
 
 void Inventary::update_workers(){
     std::unique_lock<std::mutex> uniq_l(r);
-    if (recolectors_working >0)recolectors_working --;
-    condition.notify_all();
+    recolectors_working --;
+    if (recolectors_working == 0)condition.notify_all();
 }
 
 bool Inventary::is_finish(){
