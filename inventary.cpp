@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <thread>
 
-Inventary::Inventary(std::vector<std::string> materials){
+Inventary::Inventary(std::vector<std::string>& materials){
      for (int i =0 ; i <(int)materials.size(); i++) {
         resources.insert({materials[i], 0});
 	}
@@ -17,14 +17,14 @@ void Inventary::set_workers(int workers){
     recolectors_working = workers;
 }
 
-void Inventary::add(std::string material){
+void Inventary::add(std::string& material){
     std::unique_lock<std::mutex> uniq_l(mut);
     resources[material] ++;
     condition.notify_all();
 }
 
 
-bool Inventary::get_resources(std::map<std::string,int> recipe){
+bool Inventary::get_resources(std::map<std::string,int>& recipe){
     std::unique_lock<std::mutex> uniq_l(mut);
     while (!check_completed_recipe(recipe)){
         if (is_finish())return false;
@@ -37,7 +37,7 @@ bool Inventary::get_resources(std::map<std::string,int> recipe){
 }
 
 
-bool Inventary::check_completed_recipe(std::map<std::string,int> recipe){
+bool Inventary::check_completed_recipe(std::map<std::string,int>& recipe){
     bool aux= true;
     std::map<std::string, int>::iterator it = recipe.begin();
     for (; it!=recipe.end(); ++it) {

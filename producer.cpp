@@ -9,7 +9,7 @@ Inventary& i, int& s, std::mutex& m):
 Worker(i), materials(material),points(points),sum(s),mut(m) {}
 
 void Producer::run(){ 
-    while (inventary.get_resources(materials)){
+    while (inventary.get_resources(std::ref(materials))){
         usleep(60000);
         std::unique_lock<std::mutex> uniq_l(mut);
         sum += points;

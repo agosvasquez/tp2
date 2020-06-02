@@ -3,7 +3,7 @@
 
 BlockingQueue::BlockingQueue(): closed(false){}
 
-void BlockingQueue::push(std::string s){
+void BlockingQueue::push(std::string& s){
     std::unique_lock<std::mutex> uniq_l(mut);
     queue.push(s);
     condition.notify_all();

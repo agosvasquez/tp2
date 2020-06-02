@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
     for (int i =0; i<(int)prod.size(); i++) prod[i]->start();
     for (int i =0; i<(int)recolec.size(); i++) recolec[i]->start();
     
-    while (_map.read(m)) manager.save_material(m);
+    while (_map.read(m)) manager.save_material(std::ref(m));
     manager.close();
 
     for (int i =0 ; i <(int)recolec.size(); i++) recolec[i]->join();

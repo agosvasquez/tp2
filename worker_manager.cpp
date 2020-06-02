@@ -28,7 +28,7 @@ WorkerManager::~WorkerManager(){
     delete i;
 }
 
-void WorkerManager::create_worker(std::string worker_name){
+void WorkerManager::create_worker(std::string& worker_name){
     Inventary& inv =*i; 
     if (names_rec.find(worker_name)!= std::string::npos){
             if (worker_name == AGRICULTORS) 
@@ -47,11 +47,11 @@ void WorkerManager::create_worker(std::string worker_name){
     }
 }
 
-int WorkerManager::save_material(char m){
-    if (m == 'T') agri_q.push("trigo");
-    else if (m == 'M') leniador_q.push("madera");
-    else if (m == 'H') miner_q.push("hierro");
-    else if (m =='C') miner_q.push("carbon");
+int WorkerManager::save_material(char& m){
+    if (m == 'T') agri_q.push(std::ref(RESOURSES[3]));
+    else if (m == 'M') leniador_q.push(std::ref(RESOURSES[2]));
+    else if (m == 'H') miner_q.push(std::ref(RESOURSES[1]));
+    else if (m =='C') miner_q.push(std::ref(RESOURSES[0]));
     else 
         return 1;
     return 0;

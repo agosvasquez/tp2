@@ -14,7 +14,7 @@ void Recolector::run(){
         std::string material = q.pop();
         usleep(50000);
         if (material.empty()) { inventary.update_workers(); return;}
-        inventary.add(material);
+        inventary.add(std::ref(material));
     }
 }
 

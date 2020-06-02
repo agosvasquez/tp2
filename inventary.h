@@ -14,15 +14,16 @@ protected:
     //contador de recolectores que ingresan recursos al inventario
     int recolectors_working;
     std::map<std::string, int> resources;
+    
 public:
-    explicit Inventary(std::vector<std::string> materials);
+    explicit Inventary(std::vector<std::string>& materials);
     //añade un material al inventario
-    void add(std::string material);
+    void add(std::string& material);
     //se intenta obtener los elementos de recipe del inventario
     //devuelve true si se obtienen, false en caso contrario. 
-    bool get_resources(std::map<std::string,int> recipe);
+    bool get_resources(std::map<std::string,int>& recipe);
     //dado una recipe se chequea si los elementos estan dentro del inventario
-    bool check_completed_recipe(std::map<std::string,int> recipe);
+    bool check_completed_recipe(std::map<std::string,int>& recipe);
     //decrementa la cantidad de recolectores trabajando. 
     void update_workers();
     //devuelve true si no le van a ingresar elementos al inventario

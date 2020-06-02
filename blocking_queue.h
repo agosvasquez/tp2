@@ -14,7 +14,7 @@ public:
     std::queue<std::string> queue;
     BlockingQueue();
     ~BlockingQueue();
-    void push(std::string s);
+    void push(std::string& s);
     std::string pop();
     void close();
 };
