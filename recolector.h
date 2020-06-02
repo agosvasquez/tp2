@@ -1,9 +1,10 @@
 #ifndef RECOLECTOR_H
 #define RECOLECTOR_H
 #include "worker.h"
-#include "blocking_queue.h"
 #include <string>
 #include <vector>
+
+class BlockingQueue;
 
 class Recolector: public Worker{
 public:

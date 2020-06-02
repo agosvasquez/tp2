@@ -1,6 +1,7 @@
 #include "parser.h"
 #include <iostream>
 #include <string>
+#include "file.h"
 
 Parser::Parser(std::string& line):line(line){}
 

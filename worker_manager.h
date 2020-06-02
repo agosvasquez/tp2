@@ -1,11 +1,12 @@
 #ifndef WORKER_MANAGER_H
 #define WORKER_MANAGER_H
-#include "worker.h"
 #include "blocking_queue.h"
-#include "parser.h"
-#include "file.h"
 #include <string>
 #include <vector>
+#include "worker.h"
+class File;
+class Parser;
+class Inventary;
 
 //se encarga de orquestar la creacion y admisistracion de los recursos usados por los workers
 class WorkerManager{

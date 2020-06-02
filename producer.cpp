@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <stdint.h>
 #include <sys/types.h>
+#include "inventary.h"
 
 Producer::Producer(std::map<std::string, int>& material, int& points,
 Inventary& i, int& s, std::mutex& m):

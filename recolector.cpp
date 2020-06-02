@@ -4,6 +4,8 @@
 #include <vector>
 #include <string>
 #include <sys/types.h>
+#include "inventary.h"
+#include "blocking_queue.h"
 
 Recolector::Recolector
 (std::vector<std::string>& material, BlockingQueue& queue, Inventary& i):

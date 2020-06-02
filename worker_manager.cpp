@@ -5,6 +5,9 @@
 #include "leniador.h"
 #include "carpenter.h"
 #include "gunsmith.h"
+#include "inventary.h"
+#include "parser.h"
+#include "value.h"
 #include <iostream>
 
 namespace {

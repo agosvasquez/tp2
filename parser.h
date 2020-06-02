@@ -1,9 +1,9 @@
 #ifndef PARSER_H
 #define PARSER_H
 #include "value.h"
-#include "file.h"
 #include <vector>
 #include <string>
+class File;
 
 class Parser{
 private:

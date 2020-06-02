@@ -1,7 +1,7 @@
 #ifndef WORKER_H
 #define WORKER_H
-#include "inventary.h"
 #include "thread.h"
+class Inventary;
 
 class Worker: public Thread{
 protected:

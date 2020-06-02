@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <map>
 #include "parser.h"
+#include "file.h"
 
 #define MAX = 30;
 
