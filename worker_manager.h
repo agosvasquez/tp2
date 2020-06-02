@@ -8,7 +8,8 @@ class File;
 class Parser;
 class Inventary;
 
-//se encarga de orquestar la creacion y admisistracion de los recursos usados por los workers
+//se encarga de orquestar la creacion y admisistracion 
+//de los recursos usados por los workers
 class WorkerManager{
     private:
     std::string& names_rec;
