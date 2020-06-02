@@ -17,7 +17,11 @@ class File {
     public:
     explicit File(std::string);   
     ~File();
+    //lee una linea de un file. 
+    //devuelve true cuando la lectura fue exitosa, false en caso contrario
     bool read(std::string& line);
+    //lee un caracter de un file. 
+    //devuelve true cuando la lectura fue exitosa, false en caso contrario
     bool read(char& c);
 };
 
