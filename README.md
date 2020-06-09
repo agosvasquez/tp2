@@ -19,3 +19,5 @@ A continuacion se describirán las clases mas importantes:
 ![Diagrama](diagram.png)
 
 ![Distribucion herencia](clases.png)
+
+**Entrega final**: El TP estaba muy bien desde el principio. Algunas correcciones estuvieron un poco flojas, pero los conceptos principales se entienden. Nota: 10
